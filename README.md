@@ -21,6 +21,7 @@ Este é um projeto prático para estudar o desenvolvimento de APIs utilizando No
 Acesse a pasta `docs/` para ver as explicações detalhadas de cada etapa:
 1. [Configuração Inicial](docs/01-setup.md)
 2. [Explicação dos Endpoints](docs/02-endpoints.md)
+3. [Arquitetura Modular (Routes & Controllers)](docs/03-arquitetura-modular.md)
 
 ## 🛠 Tecnologias
 - Node.js
