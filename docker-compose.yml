@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: nodeapi_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nodeapi_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # Ferramenta visual para gerenciar o banco (opcional, mas ótimo para estudo)
+  adminer:
+    image: adminer
+    container_name: nodeapi_adminer
+    restart: always
+    ports:
+      - '8080:8080'
+
+volumes:
+  pgdata:
