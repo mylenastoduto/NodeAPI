@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # Banco de Dados
   db:
     image: postgres:15-alpine
     container_name: nodeapi_postgres
@@ -14,7 +15,20 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  # Ferramenta visual para gerenciar o banco (opcional, mas ótimo para estudo)
+  # Nossa API Node.js
+  api:
+    build: .
+    container_name: nodeapi_app
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/nodeapi_db
+      - PORT=3000
+    depends_on:
+      - db
+
+  # Ferramenta visual para o banco
   adminer:
     image: adminer
     container_name: nodeapi_adminer
