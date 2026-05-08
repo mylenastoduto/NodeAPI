@@ -1,11 +1,17 @@
 # Makefile para NodeAPI
 
-.PHONY: help up down restart logs build clean shell-api shell-db
+.PHONY: help up down restart logs build clean shell-api shell-db db dev
 
 help: ## Exibe esta ajuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-up: ## Sobe os containers (API + Banco)
+db: ## Sobe APENAS o Banco de Dados e o Adminer
+	docker compose up -d db adminer
+
+dev: db ## Inicia o Banco no Docker e a API localmente (Workflow Híbrido)
+	npm start
+
+up: ## Sobe TUDO no Docker (API + Banco)
 	docker compose up -d --build
 
 down: ## Para e remove os containers

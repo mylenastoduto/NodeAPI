@@ -4,17 +4,16 @@ Este é um projeto prático para estudar o desenvolvimento de APIs utilizando No
 
 ## 🚀 Como começar
 
-### Opção 1: Usando Makefile (Mais fácil e rápido)
-Se você tiver o `make` instalado, pode gerenciar tudo com comandos simples:
+### Opção 1: Desenvolvimento Híbrido (Recomendado para codar)
+Sobe o banco no Docker e a API localmente. É o modo mais rápido:
 ```bash
-make up      # Sobe tudo
-make logs    # Vê os logs
-make down    # Para tudo
+make dev
 ```
 
-### Opção 2: Rodar tudo via Docker
+### Opção 2: Docker Total
+Sobe tudo (API + Banco) dentro de containers:
 ```bash
-docker compose up --build
+make up
 ```
 
 ## 📚 Documentação para Estudo
@@ -27,6 +26,7 @@ Acesse a pasta `docs/` para ver as explicações detalhadas de cada etapa:
 5. [Guia de Uso da API de Usuários](docs/05-guia-api-usuarios.md)
 6. [Executando Tudo com Docker (Full Dockerization)](docs/06-docker-full.md)
 7. [Automação com Makefile](docs/07-makefile-automation.md)
+8. [Workflow Híbrido (Docker + Local)](docs/08-workflow-hibrido.md)
 
 ## 🛠 Tecnologias
 - Node.js
