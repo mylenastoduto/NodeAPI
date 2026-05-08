@@ -28,6 +28,7 @@ Acesse a pasta `docs/` para ver as explicações detalhadas de cada etapa:
 2. [Explicação dos Endpoints](docs/02-endpoints.md)
 3. [Arquitetura Modular (Routes & Controllers)](docs/03-arquitetura-modular.md)
 4. [Docker e Banco de Dados (PostgreSQL)](docs/04-docker-database.md)
+5. [Guia de Uso da API de Usuários](docs/05-guia-api-usuarios.md)
 
 ## 🛠 Tecnologias
 - Node.js
