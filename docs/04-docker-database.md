@@ -12,13 +12,16 @@ Usamos o `docker-compose.yml` para definir os serviços que nossa aplicação pr
 
 ## 3. Conectando com SQL Puro (`pg`)
 Escolhemos usar a biblioteca `pg` (node-postgres) para interagir com o banco.
-- **Vantagem**: Você aprende SQL de verdade (`SELECT`, `INSERT`, `CREATE TABLE`).
-- **Configuração**: Usamos um `Pool` de conexões em `src/config/database.js`. O `Pool` gerencia múltiplas conexões de forma eficiente para a API.
+- **Vantagem**: Você aprende SQL de verdade (`SELECT`, `INSERT`, `CREATE TABLE`, `ALTER TABLE`).
+- **Configuração**: Usamos um `Pool` de conexões em `src/config/database.js`.
+- **Seeding (População de Dados)**: Adicionamos uma lógica que insere dados iniciais automaticamente se a tabela estiver vazia, ideal para começar os estudos com dados reais.
 
-## 4. Variáveis de Ambiente (`.env`)
-Nunca colocamos senhas ou URLs de banco diretamente no código.
-- Usamos o arquivo `.env` para guardar o `DATABASE_URL`.
-- A biblioteca `dotenv` carrega essas variáveis para o `process.env`.
+## 4. Novo Schema de Usuários
+A tabela `users` agora armazena:
+- `nome`: Texto (Obrigatório)
+- `email`: Texto (Obrigatório e Único)
+- `data_nascimento`: Data (AAAA-MM-DD)
+- `telefone`: Texto (Ex: (11) 99999-9999)
 
 ## Como Testar os Novos Endpoints
 
@@ -31,12 +34,18 @@ Nunca colocamos senhas ou URLs de banco diretamente no código.
    ```bash
    npm start
    ```
+   *(Ao iniciar, o console mostrará se os dados iniciais foram criados)*
 
-3. **Criar um usuário**:
+3. **Criar um usuário completo**:
    ```bash
    curl -X POST http://localhost:3000/users \
         -H "Content-Type: application/json" \
-        -d '{"nome": "Mylena", "email": "mylena@exemplo.com"}'
+        -d '{
+          "nome": "Mylena Stoduto",
+          "email": "mylena.nova@exemplo.com",
+          "data_nascimento": "1995-05-15",
+          "telefone": "(11) 98888-7777"
+        }'
    ```
 
 4. **Listar usuários**:
